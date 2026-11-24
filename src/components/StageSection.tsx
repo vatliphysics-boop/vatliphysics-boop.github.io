@@ -1,0 +1,2 @@
+import type { ReactNode } from "react";
+export function StageSection({title,description,tone="blue",children}:{title:string;description:string;tone?:"blue"|"green"|"orange";children:ReactNode}){const c=tone==="green"?"green":tone==="orange"?"orange":"";return <section className={`card stage ${c}`}><div className="stage-heading"><span className="badge">GIAI ĐOẠN</span><span className="stage-marker">{title}</span></div><h2>{title}</h2><p className="stage-description">{description}</p><div className="grid-3 stage-items">{children}</div></section>}

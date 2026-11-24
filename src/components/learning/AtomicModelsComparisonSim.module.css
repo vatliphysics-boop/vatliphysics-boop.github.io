@@ -1,0 +1,471 @@
+/* ==========================================================================
+   MÔ PHỎNG TƯƠNG TÁC: SO SÁNH CÁC MÔ HÌNH NGUYÊN TỬ – BÀI 21
+   Bàn quang học nền tối (#0b1220) + Hệ điều khiển Carbon White (#ffffff)
+   Tối ưu cho máy chiếu lớp học (1440 px+) và điện thoại học sinh (390 px)
+   ========================================================================== */
+
+.simRoot {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  color: #161616;
+}
+
+/* Hộp câu hỏi mở đầu trả lời bằng hình */
+.leadQuestionCard {
+  background-color: #f4f4f4;
+  border: 1px solid #d0d7de;
+  border-left: 4px solid #0f62fe;
+  padding: 14px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.leadQuestionText {
+  margin: 0;
+  font-size: clamp(16px, 1.6vw, 18.5px);
+  font-weight: 700;
+  line-height: 1.42;
+  color: #161616;
+  max-width: 66ch;
+  text-wrap: balance;
+}
+
+.atomSubjectBadge {
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding: 5px 10px;
+  background-color: #ffffff;
+  border: 1px solid #8d8d8d;
+  font-size: 13px;
+  font-weight: 600;
+  color: #161616;
+  white-space: normal;
+  max-width: 100%;
+  line-height: 1.4;
+}
+
+/* Khối điều khiển + Khung quan sát gắn liền nhau để trên 390 px vừa bấm vừa thấy */
+.workbenchPanel {
+  border: 1px solid #8d8d8d;
+  background-color: #ffffff;
+}
+
+.controlDeck {
+  padding: 12px 14px;
+  background-color: #f4f4f4;
+  border-bottom: 1px solid #d0d7de;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.topControlRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+/* Nhóm chọn 3 mô hình */
+.modelSegmented {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 6px;
+  flex: 1 1 420px;
+}
+
+.modelBtn {
+  appearance: none;
+  min-height: 44px;
+  padding: 8px 10px;
+  border: 1px solid #8d8d8d;
+  border-radius: 2px;
+  background-color: #ffffff;
+  color: #161616;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.28;
+  text-align: center;
+  cursor: pointer;
+  touch-action: manipulation;
+  transition: background-color 140ms ease, border-color 140ms ease, color 140ms ease;
+}
+
+.modelBtn:hover {
+  background-color: #e8e8e8;
+  border-color: #161616;
+}
+
+.modelBtnActive {
+  background-color: #0f62fe;
+  border-color: #0f62fe;
+  color: #ffffff;
+}
+
+.modelBtnActive:hover {
+  background-color: #0353e9;
+  border-color: #0353e9;
+  color: #ffffff;
+}
+
+/* Hàng nút thao tác khám phá chính */
+.actionToolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.actionGroup {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.actionBtn {
+  appearance: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-height: 42px;
+  padding: 8px 14px;
+  border: 1px solid #525252;
+  border-radius: 2px;
+  background-color: #ffffff;
+  color: #161616;
+  font-size: 13.5px;
+  font-weight: 600;
+  line-height: 1.3;
+  cursor: pointer;
+  touch-action: manipulation;
+  transition: background-color 140ms ease, border-color 140ms ease, color 140ms ease;
+}
+
+.actionBtn:hover:not(:disabled) {
+  background-color: #e8e8e8;
+  border-color: #161616;
+}
+
+.actionBtn:disabled {
+  opacity: 0.48;
+  cursor: not-allowed;
+}
+
+.positiveToggleActive {
+  background-color: #fff1f1;
+  border-color: #da1e28;
+  color: #a2191f;
+}
+
+.positiveToggleActive:hover:not(:disabled) {
+  background-color: #ffd7d9;
+  border-color: #a2191f;
+}
+
+.primarySampleBtn {
+  background-color: #0f62fe;
+  border-color: #0f62fe;
+  color: #ffffff;
+}
+
+.primarySampleBtn:hover:not(:disabled) {
+  background-color: #0353e9;
+  border-color: #0353e9;
+  color: #ffffff;
+}
+
+.compareDesktopBtn {
+  border-color: #0f62fe;
+  color: #002d9c;
+  background-color: #edf5ff;
+}
+
+.compareDesktopBtnActive {
+  background-color: #002d9c;
+  border-color: #002d9c;
+  color: #ffffff;
+}
+
+.compareDesktopBtnActive:hover:not(:disabled) {
+  background-color: #001d6c;
+  color: #ffffff;
+}
+
+/* Ẩn nút đặt cạnh nhau trên điện thoại — điện thoại chuyển qua lại trên cùng tâm */
+@media (max-width: 859px) {
+  .compareDesktopBtn {
+    display: none;
+  }
+}
+
+.sampleStatsPill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 10px;
+  background-color: #ffffff;
+  border: 1px solid #d0d7de;
+  font-size: 13px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  color: #161616;
+}
+
+/* Vùng bàn thí nghiệm quan sát nền tối */
+.stageContainerSingle {
+  background-color: #0b1220;
+  padding: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.stageContainerCompare {
+  background-color: #0b1220;
+  padding: 16px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  align-items: start;
+}
+
+@media (max-width: 859px) {
+  .stageContainerCompare {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .secondaryComparePane {
+    display: none;
+  }
+}
+
+.viewportCard {
+  width: 100%;
+  max-width: 500px;
+  margin-inline: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.viewportHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 2px 10px;
+  color: #f4f4f4;
+}
+
+.viewportTitle {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1.35;
+}
+
+.viewportEra {
+  font-size: 12.5px;
+  font-weight: 600;
+  color: #93c5fd;
+  white-space: nowrap;
+}
+
+.svgFrameWrap {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  background-color: #080e1a;
+  border: 1px solid #334155;
+  position: relative;
+}
+
+.atomSvg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.viewportCaption {
+  margin: 0;
+  font-size: 13.5px;
+  line-height: 1.5;
+  color: #e2e8f0;
+}
+
+/* Chú giải kí hiệu & quy ước tỉ lệ ngay dưới khung hình */
+.legendAndConventions {
+  padding: 12px 16px;
+  background-color: #f8fafc;
+  border-top: 1px solid #d0d7de;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 13.5px;
+  line-height: 1.55;
+}
+
+.legendItems {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  align-items: center;
+  font-weight: 600;
+  color: #161616;
+}
+
+.legendSwatchPos {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: #fff1f1;
+  border: 2px solid #da1e28;
+  color: #da1e28;
+  font-size: 12px;
+  font-weight: 700;
+  margin-right: 6px;
+}
+
+.legendSwatchElec {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background-color: #0b1220;
+  border: 2px solid #38bdf8;
+  color: #38bdf8;
+  font-size: 11px;
+  font-weight: 700;
+  margin-right: 6px;
+}
+
+.conventionNote {
+  margin: 0;
+  color: #393939;
+  font-size: 13px;
+}
+
+/* Khối nối mô hình với bằng chứng tán xạ lá vàng Rutherford */
+.evidenceBridgeCard {
+  border: 1px solid #8d8d8d;
+  border-top: 3px solid #0f62fe;
+  background-color: #ffffff;
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.bridgeHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.bridgeQuestion {
+  margin: 0;
+  font-size: 15.5px;
+  font-weight: 700;
+  line-height: 1.5;
+  color: #161616;
+  max-width: 68ch;
+}
+
+.choiceList {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+@media (max-width: 767px) {
+  .choiceList {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .controlDeck {
+    padding: 10px;
+    gap: 8px;
+  }
+  .modelBtn {
+    font-size: 13px;
+    padding: 6px 6px;
+    min-height: 42px;
+  }
+  .stageContainerSingle,
+  .stageContainerCompare {
+    padding: 10px;
+  }
+  .evidenceBridgeCard {
+    padding: 14px 12px;
+  }
+}
+
+.choiceOption {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 10px 12px;
+  border: 1px solid #d0d7de;
+  background-color: #fafafa;
+  cursor: pointer;
+  font-size: 14px;
+  line-height: 1.45;
+  touch-action: manipulation;
+}
+
+.choiceOptionSelected {
+  border: 2px solid #0f62fe;
+  background-color: #edf5ff;
+  font-weight: 600;
+}
+
+.feedbackBox {
+  padding: 12px 14px;
+  font-size: 14px;
+  line-height: 1.58;
+  border-left: 4px solid #0f62fe;
+  background-color: #edf5ff;
+  color: #161616;
+}
+
+.feedbackBoxSuccess {
+  border-left-color: #198038;
+  background-color: #defbe6;
+}
+
+.feedbackBoxWarn {
+  border-left-color: #8e6a00;
+  background-color: #fcf4d6;
+}
+
+.feedbackBoxError {
+  border-left-color: #da1e28;
+  background-color: #fff1f1;
+}
+
+.simRoot :where(button, input, textarea, summary, a):focus-visible {
+  outline: 2px solid #0f62fe;
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .modelBtn,
+  .actionBtn {
+    transition: none;
+  }
+}
